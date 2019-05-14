@@ -122,7 +122,7 @@ func renderProposal(p *Proposal) *ProposalItem {
 
 func getProposals() (results []*ProposalItem, err error) {
 	proposals := []Proposal{}
-	q := db.C(proposalsCol).Find(bson.M{"approved": true}).Sort("-_id")
+	q := db.C(proposalsCol).Find(bson.M{"approved": false}).Sort("-_id")
 	err = q.All(&proposals)
 	if err != nil {
 		return results, err
